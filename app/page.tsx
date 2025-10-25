@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { subDays, parseISO } from "date-fns";
 import Chat from "@/components/Chat";
 import Reminders from "@/components/Reminders";
+import ReminderCalendar from "@/components/ReminderCalendar";
+import { Toaster } from "react-hot-toast";
 
 export default function Page() {
   const [reminders, setReminders] = useState<any[]>([]);
@@ -17,24 +19,16 @@ export default function Page() {
     setReminders((prev) => [...prev, ...newReminders]);
   };
 
-  // Simple timer that checks every minute
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const today = new Date().toDateString();
-      reminders.forEach((r) => {
-        if (new Date(r.triggerDate).toDateString() === today) {
-          alert(r.message);
-        }
-      });
-    }, 60000);
-    return () => clearInterval(interval);
-  }, [reminders]);
-
   return (
     <main className="flex flex-col items-center p-6 gap-6">
+      <Toaster position="top-right" />
       <h1 className="text-2xl font-bold">Gentle Reminder Bot</h1>
       <Chat onReminders={addReminders} />
-      <Reminders reminders={reminders} />
+
+      <div className="flex flex-col md:flex-row gap-6">
+        <Reminders reminders={reminders} />
+        <ReminderCalendar reminders={reminders} />
+      </div>
     </main>
   );
 }
