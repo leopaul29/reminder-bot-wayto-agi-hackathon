@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Send, Sparkles, Bell } from "lucide-react";
 
-export default function Chat({ onReminders }) {
+export default function Chat({ onReminders }: { onReminders: (data: any) => void }) {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);

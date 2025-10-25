@@ -1,7 +1,8 @@
 "use client";
+import { Reminder } from "@/app/page";
 import { CheckCircle2, Clock, Bell, ArrowRight } from "lucide-react";
 
-export default function Reminders({ reminders }) {
+export default function Reminders({ reminders }: { reminders: Reminder[] }) {
     return (
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
             <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-6 text-white">

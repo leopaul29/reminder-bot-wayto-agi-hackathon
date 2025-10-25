@@ -7,8 +7,9 @@ import Reminders from "@/components/Reminders";
 import { subDays, parseISO } from "date-fns";
 import { Toaster } from "react-hot-toast";
 
+export type Reminder = { event: string; message: string; triggerDate: Date };
+
 export default function Home() {
-  type Reminder = { event: string; message: string; triggerDate: Date };
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const addReminders = (json: any) => {
     const base = parseISO(json.date);
