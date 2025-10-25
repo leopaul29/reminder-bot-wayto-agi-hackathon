@@ -8,10 +8,11 @@ import { subDays, parseISO } from "date-fns";
 import { Toaster } from "react-hot-toast";
 
 export default function Home() {
-  const [reminders, setReminders] = useState([]);
+  type Reminder = { event: string; message: string; triggerDate: Date };
+  const [reminders, setReminders] = useState<Reminder[]>([]);
   const addReminders = (json: any) => {
     const base = parseISO(json.date);
-    const newReminders = json.reminders.map((r: any) => ({
+    const newReminders: Reminder[] = json.reminders.map((r: any) => ({
       event: json.event,
       message: r.message,
       triggerDate: subDays(base, r.days_before),
