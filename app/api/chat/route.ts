@@ -32,7 +32,7 @@ Example:
 			...messages,
 		],
 		temperature: 0.4,
-		max_tokens: 150,
+		max_tokens: 200,
 	});
 
 	const message = completion.choices[0].message;
